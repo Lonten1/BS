@@ -4,11 +4,18 @@ import java.sql.*;
 
 public class DBconnection {
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/food_sales?useSSL=false&serverTimezone=GMT%2B8";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/bs?useSSL=false&serverTimezone=GMT%2B8";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
-
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            // TODO 自动生成的 catch 块
+            e.printStackTrace();
+        }
+    }
     // 获取链接的方法：getConnection  返回值：Connection 参数：无
     public static Connection getConnection() {
         Connection con = null;  // 声明全局变量con
